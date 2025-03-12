@@ -69,6 +69,7 @@ const NavBar = styled.nav`
       &:hover,
       &:active {
         color: ${({ theme }) => theme.colors.helper};
+        cursor:pointer;
       }
     }
   }
