@@ -7,7 +7,7 @@ import { createContext, useContext } from "react";
 const AppContext = createContext();
 
 const AppProvider=({children})=>{
-    return <AppContext.Provider value={{myName: "Pratik"}}>{children}</AppContext.Provider>
+    return <AppContext.Provider>{children}</AppContext.Provider>
 }
 
 // custom hooks
