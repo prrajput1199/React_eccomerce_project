@@ -1,6 +1,6 @@
 const ProductsReducer=(state,action)=>{
-    console.log("action inside ProductsReducer => ", action);
-    console.log("action inside ProductsReducer => ", state);
+    // console.log("action inside ProductsReducer => ", action);
+    // console.log("action inside ProductsReducer => ", state);
     switch (action.type) {
         case "SET_LOADING":
             return {
@@ -34,7 +34,7 @@ const ProductsReducer=(state,action)=>{
             }
         
                
-        case "SET_PRODUCT_API_DATA":      
+        case "SET_SINGLE_PRODUCT_API_DATA":      
             return {
                 ...state,
                 isSingleLoading : false,
