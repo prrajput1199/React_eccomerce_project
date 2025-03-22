@@ -2,11 +2,14 @@ import styled from "styled-components";
 import { useProductContext } from "./styles/Context/ProductContext";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import PageNavigation from "./Components/PageNavigation";
+import MyImage from "./Components/MyImage";
+import FormatPrice from "./Helper/FormatPrice";
 
 const SingleProduct = () => {
   const { getSingleProduct, isSingleLoading, singleProduct } =
     useProductContext();
-    
+
   const { id } = useParams();
   const SINGLE_API = "https://api.pujakaitem.com/api/products";
   const {
@@ -16,13 +19,45 @@ const SingleProduct = () => {
     colors,
     description,
     category,
+    image,
+    stars,
+    reviews,
+    price
   } = singleProduct;
 
   useEffect(() => {
     getSingleProduct(`${SINGLE_API}?id=${id}`);
   }, []);
 
-  return <Wrapper>{name}</Wrapper>;
+  return (
+    <>
+      <PageNavigation title={name} />
+      {console.log("singleProduct =>", singleProduct)};
+      <div className="container">
+        <div className="grid grid-two-column">
+          <div className="product_images">
+            <MyImage images={image} />
+          </div>
+
+          <div className="product_data">
+             <h2>{name}</h2>
+             <p>{stars}</p>
+             <p>{reviews} reviews</p>
+             <div className="product-data-price">
+                MRP: 
+                <del>
+                  <FormatPrice price = {price + 250000}/>
+                </del>
+             </div>
+             <p className="product-data-price product-data-real-price">
+                 Deal of the Day : <FormatPrice price={price}/>
+             </p>
+             <p>{description}</p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 const Wrapper = styled.section`
