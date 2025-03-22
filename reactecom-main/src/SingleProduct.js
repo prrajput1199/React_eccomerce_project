@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import PageNavigation from "./Components/PageNavigation";
 import MyImage from "./Components/MyImage";
 import FormatPrice from "./Helper/FormatPrice";
+import { TbReplace, TbTruckDelivery } from "react-icons/tb";
+import { MdSecurity } from "react-icons/md";
 
 const SingleProduct = () => {
   const { getSingleProduct, isSingleLoading, singleProduct } =
@@ -22,7 +24,8 @@ const SingleProduct = () => {
     image,
     stars,
     reviews,
-    price
+    price,
+    stock,
   } = singleProduct;
 
   useEffect(() => {
@@ -30,7 +33,7 @@ const SingleProduct = () => {
   }, []);
 
   return (
-    <>
+    <Wrapper>
       <PageNavigation title={name} />
       {console.log("singleProduct =>", singleProduct)};
       <div className="container">
@@ -39,24 +42,57 @@ const SingleProduct = () => {
             <MyImage images={image} />
           </div>
 
-          <div className="product_data">
-             <h2>{name}</h2>
-             <p>{stars}</p>
-             <p>{reviews} reviews</p>
-             <div className="product-data-price">
-                MRP: 
-                <del>
-                  <FormatPrice price = {price + 250000}/>
-                </del>
-             </div>
-             <p className="product-data-price product-data-real-price">
-                 Deal of the Day : <FormatPrice price={price}/>
-             </p>
-             <p>{description}</p>
+          <div className="product-data">
+            <h2>{name}</h2>
+            <p>{stars}</p>
+            <p>{reviews} reviews</p>
+            <div className="product-data-price">
+              MRP:
+              <del>
+                <FormatPrice price={price + 250000} />
+              </del>
+            </div>
+            <p className="product-data-price product-data-real-price">
+              Deal of the Day : <FormatPrice price={price} />
+            </p>
+            <p>{description}</p>
+            <div className="product-data-warranty">
+              <div className="product-warranty-data">
+                <TbTruckDelivery className="warranty-icon" />
+                <p>Free Delivery</p>
+              </div>
+
+              <div className="product-warranty-data">
+                <TbReplace className="warranty-icon" />
+                <p>30 Days Replacement</p>
+              </div>
+
+              <div className="product-warranty-data">
+                <TbTruckDelivery className="warranty-icon" />
+                <p>Thapa Delivered </p>
+              </div>
+
+              <div className="product-warranty-data">
+                <MdSecurity className="warranty-icon" />
+                <p>2 Year Warranty </p>
+              </div>
+            </div>
+            <div className="product-data-info">
+              <p>
+                Available :
+                <span>{stock > 0 ? " in stock " : "Not available"}</span>
+              </p>
+              <p>
+                ID: <span> {id}</span>
+              </p>
+              <p>
+                Brand: <span> {company}</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </Wrapper>
   );
 };
 
