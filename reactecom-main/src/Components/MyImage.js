@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const MyImage = ({ images = [{ url: "" }] }) => {
   console.log("Images => ", images);
-  const [mainimg, setmainImg] = useState( images[0] );
+  const [mainimg, setmainImg] = useState();
   return (
     <Wrapper>
       <div className="grid grid-four-column">
@@ -22,7 +22,7 @@ const MyImage = ({ images = [{ url: "" }] }) => {
       </div>
 
       <div className="main-screen">
-        <img src={mainimg.url} alt={mainimg.filename} />
+        <img src={ mainimg ? mainimg.url : images[0].url} alt={mainimg ? mainimg.filename : images[0].filename} />
       </div>
     </Wrapper>
   );

@@ -7,6 +7,7 @@ import MyImage from "./Components/MyImage";
 import FormatPrice from "./Helper/FormatPrice";
 import { TbReplace, TbTruckDelivery } from "react-icons/tb";
 import { MdSecurity } from "react-icons/md";
+import StarRating from "./Components/StarRating";
 
 const SingleProduct = () => {
   const { getSingleProduct, isSingleLoading, singleProduct } =
@@ -38,14 +39,13 @@ const SingleProduct = () => {
       {console.log("singleProduct =>", singleProduct)};
       <div className="container">
         <div className="grid grid-two-column">
-          <div className="product_images">
+          <div className="product-images">
             <MyImage images = {image}/>
           </div>
 
           <div className="product-data">
             <h2>{name}</h2>
-            <p>{stars}</p>
-            <p>{reviews} reviews</p>
+            <StarRating stars={stars} reviews={reviews}/>
             <div className="product-data-price">
               MRP:
               <del>
@@ -158,7 +158,7 @@ const Wrapper = styled.section`
     }
   }
 
-  .product-images {
+  .product-images{
     display: flex;
     justify-content: center;
     align-items: center;
