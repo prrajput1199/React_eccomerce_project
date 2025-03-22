@@ -6,7 +6,6 @@ import styled from "styled-components";
 const StarRating = ({ stars, reviews }) => {
   const RatingStar = Array.from({ length: 5 }, (curElement, index) => {
     const number = index + 0.5;
-
     return (
       <span key={index}>
         {stars > index + 1 ? (
@@ -14,7 +13,7 @@ const StarRating = ({ stars, reviews }) => {
         ) : stars >= number ? (
           <FaStarHalf className="icon"/>
         ) : (
-          <AiOutlineStar className="icon"/>
+          <AiOutlineStar className="empty-icon icon"/>
         )}
       </span>
     );
@@ -43,7 +42,7 @@ const Wrapper = styled.section`
     }
 
     .empty-icon {
-      font-size: 2.6rem;
+      font-size: 2.4rem;
     }
     p {
       margin: 0;

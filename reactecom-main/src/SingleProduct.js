@@ -8,6 +8,7 @@ import FormatPrice from "./Helper/FormatPrice";
 import { TbReplace, TbTruckDelivery } from "react-icons/tb";
 import { MdSecurity } from "react-icons/md";
 import StarRating from "./Components/StarRating";
+import AddToCart from "./Components/AddToCart";
 
 const SingleProduct = () => {
   const { getSingleProduct, isSingleLoading, singleProduct } =
@@ -37,61 +38,67 @@ const SingleProduct = () => {
     <Wrapper>
       <PageNavigation title={name} />
       {console.log("singleProduct =>", singleProduct)};
-      <div className="container">
-        <div className="grid grid-two-column">
-          <div className="product-images">
-            <MyImage images = {image}/>
-          </div>
-
-          <div className="product-data">
-            <h2>{name}</h2>
-            <StarRating stars={stars} reviews={reviews}/>
-            <div className="product-data-price">
-              MRP:
-              <del>
-                <FormatPrice price={price + 250000} />
-              </del>
+      {isSingleLoading ? (
+        <p>Loading.......</p>
+      ) : (
+        <div className="container">
+          <div className="grid grid-two-column">
+            <div className="product-images">
+              <MyImage images={image} />
             </div>
-            <p className="product-data-price product-data-real-price">
-              Deal of the Day : <FormatPrice price={price} />
-            </p>
-            <p>{description}</p>
-            <div className="product-data-warranty">
-              <div className="product-warranty-data">
-                <TbTruckDelivery className="warranty-icon" />
-                <p>Free Delivery</p>
-              </div>
 
-              <div className="product-warranty-data">
-                <TbReplace className="warranty-icon" />
-                <p>30 Days Replacement</p>
+            <div className="product-data">
+              <h2>{name}</h2>
+              <StarRating stars={stars} reviews={reviews} />
+              <div className="product-data-price">
+                MRP:
+                <del>
+                  <FormatPrice price={price + 250000} />
+                </del>
               </div>
+              <p className="product-data-price product-data-real-price">
+                Deal of the Day : <FormatPrice price={price} />
+              </p>
+              <p>{description}</p>
+              <div className="product-data-warranty">
+                <div className="product-warranty-data">
+                  <TbTruckDelivery className="warranty-icon" />
+                  <p>Free Delivery</p>
+                </div>
 
-              <div className="product-warranty-data">
-                <TbTruckDelivery className="warranty-icon" />
-                <p>Thapa Delivered </p>
-              </div>
+                <div className="product-warranty-data">
+                  <TbReplace className="warranty-icon" />
+                  <p>30 Days Replacement</p>
+                </div>
 
-              <div className="product-warranty-data">
-                <MdSecurity className="warranty-icon" />
-                <p>2 Year Warranty </p>
+                <div className="product-warranty-data">
+                  <TbTruckDelivery className="warranty-icon" />
+                  <p>Thapa Delivered </p>
+                </div>
+
+                <div className="product-warranty-data">
+                  <MdSecurity className="warranty-icon" />
+                  <p>2 Year Warranty </p>
+                </div>
               </div>
-            </div>
-            <div className="product-data-info">
-              <p>
-                Available :
-                <span>{stock > 0 ? " in stock " : "Not available"}</span>
-              </p>
-              <p>
-                ID: <span> {id}</span>
-              </p>
-              <p>
-                Brand: <span> {company}</span>
-              </p>
+              <div className="product-data-info">
+                <p>
+                  Available :
+                  <span>{stock > 0 ? " in stock " : "Not available"}</span>
+                </p>
+                <p>
+                  ID: <span> {id}</span>
+                </p>
+                <p>
+                  Brand: <span> {company}</span>
+                </p>
+              </div>
+              <hr />
+              { stock && <AddToCart singleProduct = {singleProduct}/>}
             </div>
           </div>
         </div>
-      </div>
+      )}
     </Wrapper>
   );
 };
@@ -158,7 +165,7 @@ const Wrapper = styled.section`
     }
   }
 
-  .product-images{
+  .product-images {
     display: flex;
     justify-content: center;
     align-items: center;
