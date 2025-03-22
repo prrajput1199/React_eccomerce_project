@@ -39,7 +39,7 @@ const SingleProduct = () => {
       <div className="container">
         <div className="grid grid-two-column">
           <div className="product_images">
-            <MyImage images={image} />
+            <MyImage images = {image}/>
           </div>
 
           <div className="product-data">

@@ -1,22 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-const MyImage = ({ images }) => {
+const MyImage = ({ images = [{ url: "" }] }) => {
+  console.log("Images => ", images);
+  const [mainimg, setmainImg] = useState( images[0] );
   return (
     <Wrapper>
-        <div className="grid grid-four-column">
-          {
-              images.map((curEl,index)=>{
-                return(
-                  <figure>
-                    
-                  </figure>
-                )
-              })
-          }
-        </div>
+      <div className="grid grid-four-column">
+        {images.map((curEl, index) => {
+          return (
+            <figure>
+              <img
+                src={curEl.url}
+                alt={curEl.filename}
+                key={curEl.id}
+                onClick={() => setmainImg(curEl)}
+              />
+            </figure>
+          );
+        })}
+      </div>
+
+      <div className="main-screen">
+        <img src={mainimg.url} alt={mainimg.filename} />
+      </div>
     </Wrapper>
-  )
+  );
 };
 
 const Wrapper = styled.section`
