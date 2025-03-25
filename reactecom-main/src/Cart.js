@@ -16,6 +16,7 @@ const Wrapper = styled.section`
     text-align: center;
     align-items: center;
   }
+
   .cart-heading {
     text-align: center;
     text-transform: uppercase;
@@ -46,9 +47,11 @@ const Wrapper = styled.section`
       font-size: 2.4rem;
     }
   }
+    
   .cart-user--name {
     text-transform: capitalize;
   }
+
   .cart-image--name {
     /* background-color: red; */
     align-items: center;
