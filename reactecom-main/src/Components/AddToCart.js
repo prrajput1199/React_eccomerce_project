@@ -15,7 +15,7 @@ const AddToCart = ({ singleProduct }) => {
   };
 
   const DECR = () => {
-    amount > 0 ? setAmount(amount - 1) : setAmount(1);
+    amount > 1 ? setAmount(amount - 1) : setAmount(1);
   };
 
   return (
