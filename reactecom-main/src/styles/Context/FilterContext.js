@@ -7,6 +7,7 @@ const FilterContext = createContext();
 const initialState = {
   filterProducts: [],
   allProducts: [],
+  grid_view: true,
 };
 
 export const FilterContextProvider = ({ children }) => {
@@ -15,6 +16,10 @@ export const FilterContextProvider = ({ children }) => {
   const { products } = useProductContext();
 
   console.log("FilterContextPage =>", products);
+
+  const setGridView = () => {
+    return dispatch({type:"select_view"});
+  };
 
   useEffect(() => {
     dispatch({ type: "FILTERED_PRODUCT_DATA", payload: products });

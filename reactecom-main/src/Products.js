@@ -6,9 +6,6 @@ import FilterSection from "./Components/FilterSection";
 import { useFilterContext } from "./styles/Context/FilterContext";
 
 const Products = () => {
-  const { filterProducts } = useFilterContext();
-
-  console.log("FilterProductPage =>",filterProducts);
   return (
     <Wrapper>
       <div className="container grid grid-filter-column">

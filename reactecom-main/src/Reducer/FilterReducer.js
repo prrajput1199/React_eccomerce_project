@@ -9,10 +9,16 @@ const FilterReducer = (state, action) => {
         allProducts: [...action.payload],
       };
 
+    case "select_view":
+      return {
+        ...state,
+        grid_view: true,
+      };
+
     default:
       return {
-        ...state
-      }
+        ...state,
+      };
   }
 };
 
