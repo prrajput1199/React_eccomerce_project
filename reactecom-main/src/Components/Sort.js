@@ -34,7 +34,7 @@ const Sort = () => {
             name="sort"
             id="sort"
             className="sort-selection--style"
-            onChange={Sorting}
+            onClick={Sorting}
           >
             <option value="lowest">Price(lowest)</option>
             <option value="highest">Price(highest)</option>
