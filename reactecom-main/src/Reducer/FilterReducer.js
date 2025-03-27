@@ -9,10 +9,25 @@ const FilterReducer = (state, action) => {
         allProducts: [...action.payload],
       };
 
-    case "select_view":
+    case "select_grid_view":
       return {
         ...state,
         grid_view: true,
+      };
+
+    case "select_list_view":
+      return {
+        ...state,
+        grid_view: false,
+      };
+
+    case "SORTING_PRODUCTS":
+      const userOptions = document.querySelector('#sort');
+      const sortValue = userOptions.options[userOptions.selectedIndex].value
+      return {
+        ...state,
+        selected_value : sortValue
+        
       };
 
     default:
