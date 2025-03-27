@@ -3,7 +3,22 @@ import { useFilterContext } from '../styles/Context/FilterContext';
 import styled from 'styled-components';
 
 const FilterSection = () => {
-  const {updateFilterProduct,filters : {text}}=useFilterContext();
+  const {updateFilterProduct,filters : {text},allProducts}=useFilterContext();
+
+
+  const UniqueCategory=(data,property)=>{
+          let Newdata = data.map((curEl)=>{
+            return curEl[property];
+          })
+          Newdata =["All",...new Set(Newdata)]
+          console.log("NewData =>",Newdata);
+          return Newdata;
+  }
+
+  const GetUniqueCategory = UniqueCategory(allProducts,"category");
+
+  console.log("GetUniqueCategory =>",GetUniqueCategory);
+
   return (
     <Wrapper>
       <div className="filter-search">
