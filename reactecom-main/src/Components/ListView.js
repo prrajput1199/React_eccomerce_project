@@ -12,7 +12,7 @@ const ListView = ({ productList }) => {
           const { id, name, image, price, description } = curEl;
 
           return (
-            <>
+            <div key={id}>
               <div className="card grid grid-two-column">
                 <figure>
                   <img src={image} alt={name} />
@@ -32,7 +32,7 @@ const ListView = ({ productList }) => {
 
                 </div>
               </div>
-            </>
+            </div>
           );
         })}
       </div>

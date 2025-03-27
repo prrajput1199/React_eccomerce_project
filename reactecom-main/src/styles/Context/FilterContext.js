@@ -8,15 +8,13 @@ const initialState = {
   filterProducts: [],
   allProducts: [],
   grid_view: true,
-  selected_value : 1
+  sorting_value : 1
 };
 
 export const FilterContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const { products } = useProductContext();
-
-  console.log("FilterContextPage =>", products);
 
   const setGridView = () => {
     return dispatch({ type: "select_grid_view" });
@@ -27,8 +25,12 @@ export const FilterContextProvider = ({ children }) => {
   };
 
   const Sorting = () => {
-    return dispatch({ type: "SORTING_PRODUCTS" });
+    return dispatch({ type: "SORTING_PRODUCTS_STATE" });
   };
+
+  useEffect(()=>{
+     dispatch({type:"SORTING_PRODUCTS_FUNCTIONS", payload:products})
+  },[state.sorting_value])
 
   useEffect(() => {
     dispatch({ type: "FILTERED_PRODUCT_DATA", payload: products });
