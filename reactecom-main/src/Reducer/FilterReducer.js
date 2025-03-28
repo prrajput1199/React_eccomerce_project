@@ -98,15 +98,27 @@ const FilterReducer = (state, action) => {
 
     case "GET_FILTERED_VALUE":
       const { allProducts } = state;
-      const {text}=state.filters;
+      const { text, category ,company} = state.filters;
       let TempFilteredData = [...allProducts];
-      
-      if(text){
-        TempFilteredData = TempFilteredData.filter((curEl)=>{
+
+      if (text) {
+        TempFilteredData = TempFilteredData.filter((curEl) => {
           return curEl.name.toLowerCase().includes(text);
-        })
+        });
       }
-  
+
+      if (category && category !== "All") {
+          TempFilteredData = TempFilteredData.filter((curEl) => {
+            return curEl.category === category;
+          });
+      }
+
+      if (company && company !== "All") {
+          TempFilteredData = TempFilteredData.filter((curEl) => {
+            return curEl.company === company;
+          });
+      }
+
       return {
         ...state,
         filterProducts: TempFilteredData,

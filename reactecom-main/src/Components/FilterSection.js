@@ -10,12 +10,14 @@ const FilterSection = () => {
           let Newdata = data.map((curEl)=>{
             return curEl[property];
           })
+
           Newdata =["All",...new Set(Newdata)]
           console.log("NewData =>",Newdata);
           return Newdata;
   }
 
   const GetUniqueCategory = UniqueCategory(allProducts,"category");
+  const GetUniqueCompany = UniqueCategory(allProducts,"company");
 
   console.log("GetUniqueCategory =>",GetUniqueCategory);
 
@@ -24,6 +26,35 @@ const FilterSection = () => {
       <div className="filter-search">
         <form action="" onSubmit={(e)=>e.preventDefault()}>
         <input type="text" name='text' value = {text} onChange={updateFilterProduct} placeholder='Search here'/>
+        </form>
+      </div>
+      <div className="filter-category">
+        <h3>Category</h3>
+        <div>
+          {
+            GetUniqueCategory.map((curEl,index)=>{
+              return(
+                <>
+                <button onClick={updateFilterProduct} name='category' value={curEl}>{curEl}</button>
+                </>
+              )
+            })
+          }
+        </div>
+      </div>
+      <div className="filter-company">
+        <form action="#">
+          <select name="company" onClick={updateFilterProduct} className='filter-company--select '>
+             {
+              GetUniqueCompany.map((curEl)=>{
+                return(
+                  <>
+                     <option name="company" value={curEl}>{curEl}</option>
+                  </>
+                )
+              })
+             }
+          </select>
         </form>
       </div>
     </Wrapper>
