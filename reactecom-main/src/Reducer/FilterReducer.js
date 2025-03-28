@@ -37,8 +37,6 @@ const FilterReducer = (state, action) => {
       let newFilteredData;
       let tempFilterProduct = [...filterProducts];
 
-      console.log("tempFilterProduct => ", tempFilterProduct);
-
       // better way
       const SortingFunction = (a, b) => {
         if (sorting_value === "a-z") {
@@ -118,7 +116,7 @@ const FilterReducer = (state, action) => {
             return curEl.company === company;
           });
       }
-
+      
       return {
         ...state,
         filterProducts: TempFilteredData,

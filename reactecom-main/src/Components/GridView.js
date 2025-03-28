@@ -6,13 +6,15 @@ const GridView = ({productList}) => {
   return (
     <Wrapper className="section">
       <div className="container grid grid-three-column">
-        {productList.map((curEl,index)=>{
+        {productList ? productList.map((curEl,index)=>{
             return(
                 <div key={curEl.id}>
                   <Product  curEl={curEl}/>
                 </div>
             )
-        })}
+        }): (
+          <h2>No data to show</h2>
+        )}
       </div>
     </Wrapper>
   )

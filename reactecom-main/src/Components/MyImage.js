@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const MyImage = ({ images = [{ url: "" }] }) => {
-  console.log("Images => ", images);
   const [mainimg, setmainImg] = useState();
   return (
     <Wrapper>

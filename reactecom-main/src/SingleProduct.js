@@ -37,7 +37,6 @@ const SingleProduct = () => {
   return (
     <Wrapper>
       <PageNavigation title={name} />
-      {console.log("singleProduct =>", singleProduct)};
       {isSingleLoading ? (
         <p>Loading.......</p>
       ) : (

@@ -1,65 +1,84 @@
-import React from 'react'
-import { useFilterContext } from '../styles/Context/FilterContext';
-import styled from 'styled-components';
+import React from "react";
+import { useFilterContext } from "../styles/Context/FilterContext";
+import styled from "styled-components";
 
 const FilterSection = () => {
-  const {updateFilterProduct,filters : {text},allProducts}=useFilterContext();
+  const {
+    updateFilterProduct,
+    filters: { text, category },
+    allProducts,
+  } = useFilterContext();
 
+  const UniqueCategory = (data, property) => {
+    let Newdata = data.map((curEl) => {
+      return curEl[property];
+    });
 
-  const UniqueCategory=(data,property)=>{
-          let Newdata = data.map((curEl)=>{
-            return curEl[property];
-          })
+    if (property === "colors") {
+      // search about it
+      // Newdata= ["All", ...new Set([].concat(...Newdata))];
+      Newdata = Newdata.flat();
+    }
 
-          Newdata =["All",...new Set(Newdata)]
-          console.log("NewData =>",Newdata);
-          return Newdata;
-  }
+    Newdata = ["All", ...new Set(Newdata)];
+    return Newdata;
+  };
 
-  const GetUniqueCategory = UniqueCategory(allProducts,"category");
-  const GetUniqueCompany = UniqueCategory(allProducts,"company");
-
-  console.log("GetUniqueCategory =>",GetUniqueCategory);
+  const GetUniqueCategory = UniqueCategory(allProducts, "category");
+  const GetUniqueCompany = UniqueCategory(allProducts, "company");
+  const GetUniqueColor = UniqueCategory(allProducts, "colors");
 
   return (
     <Wrapper>
       <div className="filter-search">
-        <form action="" onSubmit={(e)=>e.preventDefault()}>
-        <input type="text" name='text' value = {text} onChange={updateFilterProduct} placeholder='Search here'/>
+        <form action="" onSubmit={(e) => e.preventDefault()}>
+          <input
+            type="text"
+            name="text"
+            value={text}
+            onChange={updateFilterProduct}
+            placeholder="Search here"
+          />
         </form>
       </div>
       <div className="filter-category">
         <h3>Category</h3>
         <div>
-          {
-            GetUniqueCategory.map((curEl,index)=>{
-              return(
-                <>
-                <button onClick={updateFilterProduct} name='category' value={curEl}>{curEl}</button>
-                </>
-              )
-            })
-          }
+          {GetUniqueCategory.map((curEl, index) => {
+            return (
+              <button
+                key={index}
+                onClick={updateFilterProduct}
+                name="category"
+                value={curEl}
+                className={curEl === category ? "active" : " "}
+              >
+                {curEl}
+              </button>
+            );
+          })}
         </div>
       </div>
       <div className="filter-company">
         <form action="#">
-          <select name="company" onClick={updateFilterProduct} className='filter-company--select '>
-             {
-              GetUniqueCompany.map((curEl)=>{
-                return(
-                  <>
-                     <option name="company" value={curEl}>{curEl}</option>
-                  </>
-                )
-              })
-             }
+          <select
+            name="company"
+            onClick={updateFilterProduct}
+            className="filter-company--select "
+          >
+            {GetUniqueCompany.map((curEl, index) => {
+              return (
+                <option name="company" value={curEl} key={index}>
+                  {curEl}
+                </option>
+              );
+            })}
           </select>
         </form>
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.section`
   padding: 5rem 0;
@@ -168,5 +187,4 @@ const Wrapper = styled.section`
   }
 `;
 
-
-export default FilterSection
+export default FilterSection;
