@@ -1,6 +1,4 @@
 const ProductsReducer=(state,action)=>{
-    // console.log("action inside ProductsReducer => ", action);
-    // console.log("action inside ProductsReducer => ", state);
     switch (action.type) {
         case "SET_LOADING":
             return {
