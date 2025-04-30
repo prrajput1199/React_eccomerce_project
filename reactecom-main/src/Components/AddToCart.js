@@ -4,11 +4,14 @@ import styled from "styled-components";
 import CartToggle from "./CartToggle";
 import { NavLink } from "react-router-dom";
 import { Button } from "../styles/Button";
+import { useCartContext } from "../styles/Context/CartContext";
 
 const AddToCart = ({ singleProduct }) => {
   const { id, colors, stock } = singleProduct;
   const [color, setColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
+
+  const { AddToCart } = useCartContext()
 
   const INCR = () => {
     amount < stock ? setAmount(amount + 1) : setAmount(stock);
@@ -39,7 +42,7 @@ const AddToCart = ({ singleProduct }) => {
 
       <CartToggle amount={amount} INCR={INCR} DECR={DECR} />
       <NavLink to="/cart">
-        <Button>Add to Cart</Button>
+        <Button onClick={() => AddToCart(id, color, singleProduct)}>Add to Cart</Button>
       </NavLink>
     </Wrapper>
   );
