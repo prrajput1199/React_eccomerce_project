@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { useCartContext } from "./styles/Context/CartContext";
+import CartItem from "./Components/CartItem";
 
 const Cart = () => {
   const { cart } = useCartContext();
   console.log("Cart Data=>", cart);
   return <Wrapper>
-
     <div className="container">
       <div className="cart-heading grid grid-five-column">
         <p>Item</p>
@@ -14,7 +14,12 @@ const Cart = () => {
         <p className="cart-hide">Subtotal</p>
         <p>remove</p>
       </div>
-      <hr/>
+      <hr />
+      <div className="cart-item">
+        {cart.map((curEl) => {
+          return <CartItem key={curEl.id} {...curEl} />
+        })}
+      </div>
     </div>
   </Wrapper>;
 };
