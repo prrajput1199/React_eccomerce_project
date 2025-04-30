@@ -128,6 +128,18 @@ const FilterReducer = (state, action) => {
         filterProducts: TempFilteredData,
       };
 
+    case "CLEAR_FILTER":
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          text: "",
+          category: "All",
+          company: "All",
+          color: "All"
+        }
+      }
+
     default:
       return {
         ...state,

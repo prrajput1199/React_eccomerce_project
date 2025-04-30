@@ -2,12 +2,14 @@ import React from "react";
 import { useFilterContext } from "../styles/Context/FilterContext";
 import styled from "styled-components";
 import { FaCheck } from "react-icons/fa";
+import {Button} from "../styles/Button"
 
 const FilterSection = () => {
   const {
     updateFilterProduct,
     filters: { text, category, color },
     allProducts,
+    ClearFilter
   } = useFilterContext();
 
   const UniqueCategory = (data, property) => {
@@ -97,6 +99,13 @@ const FilterSection = () => {
             )
           }
         })}
+      </div>
+
+
+      <div className="filter-clear">
+       <Button onClick={ClearFilter} className="btn">
+        Clear
+       </Button>
       </div>
     </Wrapper>
   );

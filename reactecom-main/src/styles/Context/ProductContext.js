@@ -23,8 +23,6 @@ const AppProvider = ({ children }) => {
 
   let API = "https://api.pujakaitem.com/api/products";
 
-  // ctrl + ALT + l(For logging our data)
-
   const getProducts = async (url) => {
     dispatch({ type: "SET_LOADING" });
     try {

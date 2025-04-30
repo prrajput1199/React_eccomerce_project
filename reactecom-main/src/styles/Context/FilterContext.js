@@ -42,6 +42,10 @@ export const FilterContextProvider = ({ children }) => {
     return dispatch({ type: "GET_SEARCH_VALUE", payload: { name, value } });
   };
 
+  const ClearFilter = (e) => {
+    return dispatch({ type: "CLEAR_FILTER"});
+  };
+
   useEffect(() => {
     dispatch({ type: "GET_FILTERED_VALUE"});
   }, [state.filters]);
@@ -63,6 +67,7 @@ export const FilterContextProvider = ({ children }) => {
         setListView,
         Sorting,
         updateFilterProduct,
+        ClearFilter
       }}
     >
       {children}
