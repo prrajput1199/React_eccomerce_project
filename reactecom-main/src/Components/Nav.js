@@ -3,45 +3,48 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgClose, CgMenu } from "react-icons/cg";
+import { useCartContext } from "../styles/Context/CartContext";
 
 const Nav = () => {
-    const [navMenu,setNavMenu] = useState();
+  const [navMenu, setNavMenu] = useState();
+
+  const { cart } = useCartContext()
   return (
     <NavBar>
-      <div className={ navMenu ? "navbar active" : "navbar"}>
+      <div className={navMenu ? "navbar active" : "navbar"}>
         <ul className="navbar-lists">
           <li>
-            <NavLink to="/" className="navbar-link" onClick={()=>setNavMenu(false)}>
+            <NavLink to="/" className="navbar-link" onClick={() => setNavMenu(false)}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className="navbar-link" onClick={()=>setNavMenu(false)}>
+            <NavLink to="/about" className="navbar-link" onClick={() => setNavMenu(false)}>
               About
             </NavLink>
           </li>
           <li>
-            <NavLink to="/products" className="navbar-link" onClick={()=>setNavMenu(false)}>
+            <NavLink to="/products" className="navbar-link" onClick={() => setNavMenu(false)}>
               Products
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contact" className="navbar-link" onClick={()=>setNavMenu(false)}>
+            <NavLink to="/contact" className="navbar-link" onClick={() => setNavMenu(false)}>
               Contact
             </NavLink>
           </li>
           <li>
-            <NavLink to="/cart" className="navbar-link cart-trolley--link" onClick={()=>setNavMenu(false)}>
+            <NavLink to="/cart" className="navbar-link cart-trolley--link" onClick={() => setNavMenu(false)}>
               <FiShoppingCart className="cart-trolley" />
-              <span className="cart-total--item">10</span>
+              <span className="cart-total--item">{cart.length >= 1 ? cart.length : 0}</span>
             </NavLink>
           </li>
         </ul>
 
         {/* open and close menu */}
         <div className="mobile-navbar-btn">
-          <CgMenu name="menu-outline" className="mobile-nav-icon" onClick={()=>setNavMenu(true)}/>
-          <CgClose name="close-outline" className="mobile-nav-icon close-outline" onClick={()=>setNavMenu(false)}
+          <CgMenu name="menu-outline" className="mobile-nav-icon" onClick={() => setNavMenu(true)} />
+          <CgClose name="close-outline" className="mobile-nav-icon close-outline" onClick={() => setNavMenu(false)}
           />
         </div>
       </div>

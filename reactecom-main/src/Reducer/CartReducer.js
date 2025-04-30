@@ -22,10 +22,16 @@ const CartReducer = (state, action) => {
             const updateCart = state.cart.filter((curEl) => {
                 return curEl.id !== action.payload
             })
-            
+
             return {
                 ...state,
                 cart: updateCart
+            }
+
+        case "CLEAR_CART":
+            return {
+                ...state,
+                cart: []
             }
 
         default:
