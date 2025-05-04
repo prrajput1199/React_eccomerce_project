@@ -7,14 +7,8 @@ import { useCartContext } from '../styles/Context/CartContext';
 const CartItem = ({
     Image, amount, color, id, maxStock, name, price
 }) => {
-    const { removeItem } = useCartContext();
-    const INCR = () => {
-        // amount < maxStock ? setAmount(amount + 1) : setAmount(maxStock);
-    };
+    const { removeItem, setDECR, setINCR } = useCartContext();
 
-    const DECR = () => {
-        // amount > 1 ? setAmount(amount - 1) : setAmount(1);
-    };
     return (
         <div className='cart-heading grid grid-five-column '>
             <div className='cart-image--name'>
@@ -34,13 +28,13 @@ const CartItem = ({
             <div className='cart-hide'>
                 <p> <FormatPrice price={price} /></p>
             </div>
-            <CartToggle amount={amount} INCR={INCR} DECR={DECR} />
+            <CartToggle amount={amount} INCR={() => setINCR(id)} DECR={() => setDECR(id)} />
             <div className='cart-hide'>
                 <p> <FormatPrice price={price * amount} /></p>
             </div>
 
             <div onClick={() => removeItem(id)}>
-                <FaTrash className='remove_icon'/>
+                <FaTrash className='remove_icon' />
             </div>
 
         </div>

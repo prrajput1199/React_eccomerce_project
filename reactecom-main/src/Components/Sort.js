@@ -22,13 +22,13 @@ const Sort = () => {
           <BsList className="icon" />
         </button>
       </div>
-      <div className="product-data">
+      <div className="product-data mobile-none">
         <p>{filterProducts.length} products available</p>
       </div>
       <div className="sort-selection">
         <form action="#">
           <label htmlFor="sort" style={{
-            fontSize:"1.65rem"
+            fontSize: "1.65rem"
           }}>Sort : </label>
           <select
             name="sort"
@@ -83,6 +83,12 @@ const Wrapper = styled.section`
       cursor: pointer;
       height: 2rem;
       padding: 10px;
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    .mobile-none{
+    display:none
     }
   }
 `;

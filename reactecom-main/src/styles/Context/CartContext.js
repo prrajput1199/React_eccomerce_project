@@ -34,13 +34,23 @@ const CartContextProvider = ({ children }) => {
         return dispatch({ type: "CLEAR_CART" })
     }
 
+    const setINCR = (id) => {
+        return dispatch({ type: "INCR", payload: id })
+    }
+
+
+    const setDECR = (id) => {
+        return dispatch({ type: "DECR", payload: id })
+    }
+
     const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
+        dispatch({type:"TOTAL_PRICE_CALCULATION"})
         localStorage.setItem("MyCart", JSON.stringify(state.cart))
     }, [state.cart])
 
-    return <CartContext.Provider value={{ ...state, AddToCart, removeItem, ClearCart }}>{children}</CartContext.Provider>
+    return <CartContext.Provider value={{ ...state, AddToCart, removeItem, ClearCart, setINCR, setDECR }}>{children}</CartContext.Provider>
 }
 
 const useCartContext = () => {
