@@ -30,13 +30,13 @@
 
   <h2>🔗 Live Demo & Source Code</h2>
   <ul>
-    <li><strong>Live Site:</strong> <a href="https://your-live-link.com" target="_blank">View Project</a></li>
-    <li><strong>Source Code:</strong> <a href="https://github.com/yourusername/ecommerce-project" target="_blank">GitHub Repository</a></li>
+    <li><strong>Live Site:</strong> <a href="https://react-eccomerce-project.vercel.app/" target="_blank">View Project</a></li>
+    <li><strong>Source Code:</strong> <a href="https://github.com/prrajput1199/React_eccomerce_project" target="_blank">GitHub Repository</a></li>
   </ul>
 
   <h2>📌 How to Run</h2>
   <ol>
-    <li>Clone the repository: <code>git clone https://github.com/yourusername/ecommerce-project.git</code></li>
+    <li>Clone the repository: <code>git clone https://github.com/prrajput1199/React_eccomerce_project.git</code></li>
     <li>Navigate to the project folder: <code>cd ecommerce-project</code></li>
     <li>Install dependencies: <code>npm install</code></li>
     <li>Start the development server: <code>npm start</code></li>
@@ -44,9 +44,6 @@
 
   <h2>🙌 Contributions</h2>
   <p>Feel free to fork the repo and submit pull requests. Feedback and suggestions are welcome!</p>
-
-  <h2>📬 Contact</h2>
-  <p>If you’d like to connect or have questions about the project, reach out to me via <a href="https://linkedin.com/in/your-profile" target="_blank">LinkedIn</a>.</p>
 
 </body>
 </html>
